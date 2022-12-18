@@ -1,9 +1,4 @@
-﻿// =============================
-// Email: info@ebenmonney.com
-// www.ebenmonney.com/templates
-// =============================
-
-using System;
+﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
@@ -18,20 +13,20 @@ namespace QuickApp.Migrations
                 name: "AppCustomers",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    Email = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
-                    PhoneNumber = table.Column<string>(type: "varchar(30)", unicode: false, maxLength: 30, nullable: true),
-                    Address = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    City = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
-                    Gender = table.Column<int>(type: "int", nullable: false),
-                    DateCreated = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    DateModified = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    CreatedBy = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
-                    UpdatedBy = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
-                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Name = table.Column<string>(type: "TEXT", maxLength: 100, nullable: false),
+                    Email = table.Column<string>(type: "TEXT", maxLength: 100, nullable: true),
+                    PhoneNumber = table.Column<string>(type: "TEXT", unicode: false, maxLength: 30, nullable: true),
+                    Address = table.Column<string>(type: "TEXT", nullable: true),
+                    City = table.Column<string>(type: "TEXT", maxLength: 50, nullable: true),
+                    Gender = table.Column<int>(type: "INTEGER", nullable: false),
+                    DateCreated = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    DateModified = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    CreatedBy = table.Column<string>(type: "TEXT", maxLength: 256, nullable: true),
+                    UpdatedBy = table.Column<string>(type: "TEXT", maxLength: 256, nullable: true),
+                    UpdatedDate = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    CreatedDate = table.Column<DateTime>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -42,17 +37,17 @@ namespace QuickApp.Migrations
                 name: "AppProductCategories",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
-                    Icon = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    DateCreated = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    DateModified = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    CreatedBy = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
-                    UpdatedBy = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
-                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Name = table.Column<string>(type: "TEXT", maxLength: 100, nullable: false),
+                    Description = table.Column<string>(type: "TEXT", maxLength: 500, nullable: true),
+                    Icon = table.Column<string>(type: "TEXT", nullable: true),
+                    DateCreated = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    DateModified = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    CreatedBy = table.Column<string>(type: "TEXT", maxLength: 256, nullable: true),
+                    UpdatedBy = table.Column<string>(type: "TEXT", maxLength: 256, nullable: true),
+                    UpdatedDate = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    CreatedDate = table.Column<DateTime>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -63,15 +58,15 @@ namespace QuickApp.Migrations
                 name: "AspNetRoles",
                 columns: table => new
                 {
-                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
-                    NormalizedName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
-                    ConcurrencyStamp = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Id = table.Column<string>(type: "TEXT", nullable: false),
+                    Description = table.Column<string>(type: "TEXT", nullable: true),
+                    CreatedBy = table.Column<string>(type: "TEXT", nullable: true),
+                    UpdatedBy = table.Column<string>(type: "TEXT", nullable: true),
+                    CreatedDate = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    UpdatedDate = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    Name = table.Column<string>(type: "TEXT", maxLength: 256, nullable: true),
+                    NormalizedName = table.Column<string>(type: "TEXT", maxLength: 256, nullable: true),
+                    ConcurrencyStamp = table.Column<string>(type: "TEXT", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -82,29 +77,29 @@ namespace QuickApp.Migrations
                 name: "AspNetUsers",
                 columns: table => new
                 {
-                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    JobTitle = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    FullName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Configuration = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    IsEnabled = table.Column<bool>(type: "bit", nullable: false),
-                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
-                    NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
-                    Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
-                    NormalizedEmail = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
-                    EmailConfirmed = table.Column<bool>(type: "bit", nullable: false),
-                    PasswordHash = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    SecurityStamp = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ConcurrencyStamp = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    PhoneNumberConfirmed = table.Column<bool>(type: "bit", nullable: false),
-                    TwoFactorEnabled = table.Column<bool>(type: "bit", nullable: false),
-                    LockoutEnd = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
-                    LockoutEnabled = table.Column<bool>(type: "bit", nullable: false),
-                    AccessFailedCount = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<string>(type: "TEXT", nullable: false),
+                    JobTitle = table.Column<string>(type: "TEXT", nullable: true),
+                    FullName = table.Column<string>(type: "TEXT", nullable: true),
+                    Configuration = table.Column<string>(type: "TEXT", nullable: true),
+                    IsEnabled = table.Column<bool>(type: "INTEGER", nullable: false),
+                    CreatedBy = table.Column<string>(type: "TEXT", nullable: true),
+                    UpdatedBy = table.Column<string>(type: "TEXT", nullable: true),
+                    CreatedDate = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    UpdatedDate = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    UserName = table.Column<string>(type: "TEXT", maxLength: 256, nullable: true),
+                    NormalizedUserName = table.Column<string>(type: "TEXT", maxLength: 256, nullable: true),
+                    Email = table.Column<string>(type: "TEXT", maxLength: 256, nullable: true),
+                    NormalizedEmail = table.Column<string>(type: "TEXT", maxLength: 256, nullable: true),
+                    EmailConfirmed = table.Column<bool>(type: "INTEGER", nullable: false),
+                    PasswordHash = table.Column<string>(type: "TEXT", nullable: true),
+                    SecurityStamp = table.Column<string>(type: "TEXT", nullable: true),
+                    ConcurrencyStamp = table.Column<string>(type: "TEXT", nullable: true),
+                    PhoneNumber = table.Column<string>(type: "TEXT", nullable: true),
+                    PhoneNumberConfirmed = table.Column<bool>(type: "INTEGER", nullable: false),
+                    TwoFactorEnabled = table.Column<bool>(type: "INTEGER", nullable: false),
+                    LockoutEnd = table.Column<DateTimeOffset>(type: "TEXT", nullable: true),
+                    LockoutEnabled = table.Column<bool>(type: "INTEGER", nullable: false),
+                    AccessFailedCount = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -115,24 +110,24 @@ namespace QuickApp.Migrations
                 name: "AppProducts",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
-                    Icon = table.Column<string>(type: "varchar(256)", unicode: false, maxLength: 256, nullable: true),
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Name = table.Column<string>(type: "TEXT", maxLength: 100, nullable: false),
+                    Description = table.Column<string>(type: "TEXT", maxLength: 500, nullable: true),
+                    Icon = table.Column<string>(type: "TEXT", unicode: false, maxLength: 256, nullable: true),
                     BuyingPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     SellingPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    UnitsInStock = table.Column<int>(type: "int", nullable: false),
-                    IsActive = table.Column<bool>(type: "bit", nullable: false),
-                    IsDiscontinued = table.Column<bool>(type: "bit", nullable: false),
-                    DateCreated = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    DateModified = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    ParentId = table.Column<int>(type: "int", nullable: true),
-                    ProductCategoryId = table.Column<int>(type: "int", nullable: false),
-                    CreatedBy = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
-                    UpdatedBy = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
-                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    UnitsInStock = table.Column<int>(type: "INTEGER", nullable: false),
+                    IsActive = table.Column<bool>(type: "INTEGER", nullable: false),
+                    IsDiscontinued = table.Column<bool>(type: "INTEGER", nullable: false),
+                    DateCreated = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    DateModified = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    ParentId = table.Column<int>(type: "INTEGER", nullable: true),
+                    ProductCategoryId = table.Column<int>(type: "INTEGER", nullable: false),
+                    CreatedBy = table.Column<string>(type: "TEXT", maxLength: 256, nullable: true),
+                    UpdatedBy = table.Column<string>(type: "TEXT", maxLength: 256, nullable: true),
+                    UpdatedDate = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    CreatedDate = table.Column<DateTime>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -155,11 +150,11 @@ namespace QuickApp.Migrations
                 name: "AspNetRoleClaims",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    RoleId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    ClaimType = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ClaimValue = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    RoleId = table.Column<string>(type: "TEXT", nullable: false),
+                    ClaimType = table.Column<string>(type: "TEXT", nullable: true),
+                    ClaimValue = table.Column<string>(type: "TEXT", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -176,18 +171,18 @@ namespace QuickApp.Migrations
                 name: "AppOrders",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
                     Discount = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    Comments = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
-                    DateCreated = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    DateModified = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    CashierId = table.Column<string>(type: "nvarchar(450)", nullable: true),
-                    CustomerId = table.Column<int>(type: "int", nullable: false),
-                    CreatedBy = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
-                    UpdatedBy = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
-                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    Comments = table.Column<string>(type: "TEXT", maxLength: 500, nullable: true),
+                    DateCreated = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    DateModified = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    CashierId = table.Column<string>(type: "TEXT", nullable: true),
+                    CustomerId = table.Column<int>(type: "INTEGER", nullable: false),
+                    CreatedBy = table.Column<string>(type: "TEXT", maxLength: 256, nullable: true),
+                    UpdatedBy = table.Column<string>(type: "TEXT", maxLength: 256, nullable: true),
+                    UpdatedDate = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    CreatedDate = table.Column<DateTime>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -209,11 +204,11 @@ namespace QuickApp.Migrations
                 name: "AspNetUserClaims",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    ClaimType = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ClaimValue = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    UserId = table.Column<string>(type: "TEXT", nullable: false),
+                    ClaimType = table.Column<string>(type: "TEXT", nullable: true),
+                    ClaimValue = table.Column<string>(type: "TEXT", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -230,10 +225,10 @@ namespace QuickApp.Migrations
                 name: "AspNetUserLogins",
                 columns: table => new
                 {
-                    LoginProvider = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    ProviderKey = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    ProviderDisplayName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                    LoginProvider = table.Column<string>(type: "TEXT", nullable: false),
+                    ProviderKey = table.Column<string>(type: "TEXT", nullable: false),
+                    ProviderDisplayName = table.Column<string>(type: "TEXT", nullable: true),
+                    UserId = table.Column<string>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -250,8 +245,8 @@ namespace QuickApp.Migrations
                 name: "AspNetUserRoles",
                 columns: table => new
                 {
-                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    RoleId = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                    UserId = table.Column<string>(type: "TEXT", nullable: false),
+                    RoleId = table.Column<string>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -274,10 +269,10 @@ namespace QuickApp.Migrations
                 name: "AspNetUserTokens",
                 columns: table => new
                 {
-                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    LoginProvider = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    Value = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    UserId = table.Column<string>(type: "TEXT", nullable: false),
+                    LoginProvider = table.Column<string>(type: "TEXT", nullable: false),
+                    Name = table.Column<string>(type: "TEXT", nullable: false),
+                    Value = table.Column<string>(type: "TEXT", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -294,17 +289,17 @@ namespace QuickApp.Migrations
                 name: "AppOrderDetails",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
                     UnitPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    Quantity = table.Column<int>(type: "int", nullable: false),
+                    Quantity = table.Column<int>(type: "INTEGER", nullable: false),
                     Discount = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    ProductId = table.Column<int>(type: "int", nullable: false),
-                    OrderId = table.Column<int>(type: "int", nullable: false),
-                    CreatedBy = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
-                    UpdatedBy = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
-                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    ProductId = table.Column<int>(type: "INTEGER", nullable: false),
+                    OrderId = table.Column<int>(type: "INTEGER", nullable: false),
+                    CreatedBy = table.Column<string>(type: "TEXT", maxLength: 256, nullable: true),
+                    UpdatedBy = table.Column<string>(type: "TEXT", maxLength: 256, nullable: true),
+                    UpdatedDate = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    CreatedDate = table.Column<DateTime>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -372,8 +367,7 @@ namespace QuickApp.Migrations
                 name: "RoleNameIndex",
                 table: "AspNetRoles",
                 column: "NormalizedName",
-                unique: true,
-                filter: "[NormalizedName] IS NOT NULL");
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetUserClaims_UserId",
@@ -399,8 +393,7 @@ namespace QuickApp.Migrations
                 name: "UserNameIndex",
                 table: "AspNetUsers",
                 column: "NormalizedUserName",
-                unique: true,
-                filter: "[NormalizedUserName] IS NOT NULL");
+                unique: true);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

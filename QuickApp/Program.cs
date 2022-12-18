@@ -56,7 +56,7 @@ namespace QuickApp
             string migrationsAssembly = typeof(Program).GetTypeInfo().Assembly.GetName().Name; //QuickApp
 
             builder.Services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(connectionString, b => b.MigrationsAssembly(migrationsAssembly)));
+                options.UseSqlite(connectionString, b => b.MigrationsAssembly(migrationsAssembly)));
 
             // add identity
             builder.Services.AddIdentity<ApplicationUser, ApplicationRole>()
