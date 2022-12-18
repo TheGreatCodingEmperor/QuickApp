@@ -5,7 +5,7 @@
     <IsPackable>false</IsPackable>
     <SpaRoot>ClientApp\</SpaRoot>
     <SpaProxyServerUrl>https://localhost:44450</SpaProxyServerUrl>
-    <SpaProxyLaunchCommand>npm start</SpaProxyLaunchCommand>
+    <!-- <SpaProxyLaunchCommand>npm start</SpaProxyLaunchCommand> -->
     <Description>ASPNET Core 6.0 - Angular 14 startup template for Quick Application Development</Description>
     <Copyright>Copyright © 2022 www.ebenmonney.com</Copyright>
     <PackageProjectUrl>https://www.ebenmonney.com/quickapp</PackageProjectUrl>

@@ -3,11 +3,14 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "quickapp": {
+    "sakai-ng": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
           "style": "scss"
+        },
+        "@schematics/angular:application": {
+          "strict": true
         }
       },
       "root": "",
@@ -17,76 +20,18 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "progress": false,
-            "outputPath": "dist",
+            "outputPath": "dist/sakai-ng",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
+              "src/favicon.ico",
               "src/assets"
             ],
             "styles": [
-              {
-                "input": "src/styles.scss"
-              },
-              {
-                "input": "src/app/assets/themes/cerulean.scss",
-                "inject": false
-              },
-              {
-                "input": "src/app/assets/themes/cosmo.scss",
-                "inject": false
-              },
-              {
-                "input": "src/app/assets/themes/flatly.scss",
-                "inject": false
-              },
-              {
-                "input": "src/app/assets/themes/journal.scss",
-                "inject": false
-              },
-              {
-                "input": "src/app/assets/themes/lumen.scss",
-                "inject": false
-              },
-              {
-                "input": "src/app/assets/themes/minty.scss",
-                "inject": false
-              },
-              {
-                "input": "src/app/assets/themes/pulse.scss",
-                "inject": false
-              },
-              {
-                "input": "src/app/assets/themes/sketchy.scss",
-                "inject": false
-              },
-              {
-                "input": "src/app/assets/themes/slate.scss",
-                "inject": false
-              },
-              {
-                "input": "src/app/assets/themes/solar.scss",
-                "inject": false
-              },
-              {
-                "input": "src/app/assets/themes/spacelab.scss",
-                "inject": false
-              },
-              {
-                "input": "src/app/assets/themes/superhero.scss",
-                "inject": false
-              },
-              {
-                "input": "src/app/assets/themes/united.scss",
-                "inject": false
-              }
-            ],
-            "scripts": [
-              "node_modules/@popperjs/core/dist/umd/popper.js",
-              "node_modules/bootstrap/dist/js/bootstrap.js"
+              "src/styles.scss"
             ]
           },
           "configurations": {
@@ -94,13 +39,13 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "2mb",
+                  "maximumWarning": "1mb",
                   "maximumError": "5mb"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "6kb",
-                  "maximumError": "10kb"
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
                 }
               ],
               "fileReplacements": [
@@ -126,10 +71,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "quickapp:build:production"
+              "browserTarget": "sakai-ng:build:production"
             },
             "development": {
-              "browserTarget": "quickapp:build:development",
+              "browserTarget": "sakai-ng:build:development",
               "proxyConfig": "proxy.conf.js"
             }
           },
@@ -138,7 +83,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "quickapp:build"
+            "browserTarget": "sakai-ng:build"
           }
         },
         "test": {
@@ -150,69 +95,32 @@
             "karmaConfig": "karma.conf.js",
             "inlineStyleLanguage": "scss",
             "assets": [
+              "src/favicon.ico",
               "src/assets"
             ],
             "styles": [
-              {
-                "input": "src/styles.scss"
-              },
-              {
-                "input": "src/app/assets/themes/cerulean.scss",
-                "inject": false
-              },
-              {
-                "input": "src/app/assets/themes/cosmo.scss",
-                "inject": false
-              },
-              {
-                "input": "src/app/assets/themes/flatly.scss",
-                "inject": false
-              },
-              {
-                "input": "src/app/assets/themes/journal.scss",
-                "inject": false
-              },
-              {
-                "input": "src/app/assets/themes/lumen.scss",
-                "inject": false
-              },
-              {
-                "input": "src/app/assets/themes/minty.scss",
-                "inject": false
-              },
-              {
-                "input": "src/app/assets/themes/pulse.scss",
-                "inject": false
-              },
-              {
-                "input": "src/app/assets/themes/sketchy.scss",
-                "inject": false
-              },
-              {
-                "input": "src/app/assets/themes/slate.scss",
-                "inject": false
-              },
-              {
-                "input": "src/app/assets/themes/solar.scss",
-                "inject": false
-              },
-              {
-                "input": "src/app/assets/themes/spacelab.scss",
-                "inject": false
-              },
-              {
-                "input": "src/app/assets/themes/superhero.scss",
-                "inject": false
-              },
-              {
-                "input": "src/app/assets/themes/united.scss",
-                "inject": false
-              }
+              "src/styles.scss"
             ],
             "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
+            ]
           }
         }
       }
     }
+  },
+  "defaultProject": "sakai-ng",
+  "cli": {
+    "analytics": false,
+    "schematicCollections": [
+      "@angular-eslint/schematics"
+    ]
   }
 }
