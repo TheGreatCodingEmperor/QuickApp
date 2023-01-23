@@ -28,6 +28,7 @@ export class AccountEndpoint extends EndpointBase {
 
   constructor(private configurations: ConfigurationService, http: HttpClient, authService: AuthService) {
     super(http, authService);
+    this.configurations.baseUrl;
   }
 
 

@@ -51,6 +51,9 @@ namespace QuickApp.ViewModels
 
             CreateMap<IdentityRoleClaim<string>, PermissionViewModel>()
                 .ConvertUsing(s => (PermissionViewModel)ApplicationPermissions.GetPermissionByValue(s.ClaimValue));
+
+            CreateMap<Product,ProductViewModel>()
+                .ReverseMap();
         }
     }
 }

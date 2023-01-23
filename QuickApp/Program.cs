@@ -40,7 +40,7 @@ namespace QuickApp
             var app = builder.Build();
             ConfigureRequestPipeline(app); // Configure the HTTP request pipeline.
 
-            SeedDatabase(app); //Seed initial database
+            // SeedDatabase(app); //Seed initial database
 
             app.Run();
         }
@@ -57,6 +57,9 @@ namespace QuickApp
 
             builder.Services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlite(connectionString, b => b.MigrationsAssembly(migrationsAssembly)));
+
+            builder.Services.AddDbContext<ManagementDbContext>(options =>
+                options.UseInMemoryDatabase("manage"));
 
             // add identity
             builder.Services.AddIdentity<ApplicationUser, ApplicationRole>()

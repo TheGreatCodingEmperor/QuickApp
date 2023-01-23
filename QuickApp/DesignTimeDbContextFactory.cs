@@ -16,6 +16,23 @@ using AutoMapper;
 
 namespace QuickApp
 {
+    public class DesignTimeManagementDbContextFactory : IDesignTimeDbContextFactory<ManagementDbContext>
+    {
+        public ManagementDbContext CreateDbContext(string[] args)
+        {
+            IConfigurationRoot configuration = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.json")
+                .AddJsonFile("appsettings.Development.json", optional: true)
+                .Build();
+
+            var builder = new DbContextOptionsBuilder<ManagementDbContext>();
+
+            builder.UseInMemoryDatabase("manage");
+
+            return new ManagementDbContext(builder.Options);
+        }
+    }
     public class DesignTimeDbContextFactory : IDesignTimeDbContextFactory<ApplicationDbContext>
     {
         public ApplicationDbContext CreateDbContext(string[] args)

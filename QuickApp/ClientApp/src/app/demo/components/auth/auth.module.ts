@@ -8,6 +8,8 @@ import { AuthService } from 'src/app/services/auth.service';
         CommonModule,
         AuthRoutingModule
     ],
-    providers:[AuthService]
+    providers:[AuthService],
+    declarations: [
+    ]
 })
 export class AuthModule { }

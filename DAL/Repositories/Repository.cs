@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Repositories
 {
-    public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
+    public class Repository<TEntity> where TEntity : class
     {
         protected readonly DbContext _context;
         protected readonly DbSet<TEntity> _entities;
@@ -28,22 +28,26 @@ namespace DAL.Repositories
         public virtual void Add(TEntity entity)
         {
             _entities.Add(entity);
+            _context.SaveChanges();
         }
 
         public virtual void AddRange(IEnumerable<TEntity> entities)
         {
             _entities.AddRange(entities);
+            _context.SaveChanges();
         }
 
 
         public virtual void Update(TEntity entity)
         {
             _entities.Update(entity);
+            _context.SaveChanges();
         }
 
         public virtual void UpdateRange(IEnumerable<TEntity> entities)
         {
             _entities.UpdateRange(entities);
+            _context.SaveChanges();
         }
 
 
@@ -51,11 +55,13 @@ namespace DAL.Repositories
         public virtual void Remove(TEntity entity)
         {
             _entities.Remove(entity);
+            _context.SaveChanges();
         }
 
         public virtual void RemoveRange(IEnumerable<TEntity> entities)
         {
             _entities.RemoveRange(entities);
+            _context.SaveChanges();
         }
 
 
@@ -75,7 +81,7 @@ namespace DAL.Repositories
             return _entities.SingleOrDefault(predicate);
         }
 
-        public virtual TEntity Get(int id)
+        public virtual TEntity Get(object id)
         {
             return _entities.Find(id);
         }
@@ -83,6 +89,10 @@ namespace DAL.Repositories
         public virtual IEnumerable<TEntity> GetAll()
         {
             return _entities.ToList();
+        }
+
+        public void ClearTrack(){
+            _context.ChangeTracker.Clear();
         }
     }
 }

@@ -1,0 +1,46 @@
+import { HttpClient } from "@angular/common/http";
+import { Injectable } from "@angular/core";
+import { TreeNode } from "primeng/api";
+import { Observable } from "rxjs";
+import { catchError } from "rxjs/operators";
+import { AuthService } from "src/app/services/auth.service";
+import { EndpointBase } from 'src/app/services/endpoint-base.service';
+
+@Injectable({ providedIn: 'root' })
+export class OrganizationService extends EndpointBase {
+  constructor(
+    http: HttpClient,
+    auth: AuthService
+  ) {
+    super(http, auth);
+    this.endpointUrl = '/api/Organization'
+  }
+
+  public getTrees(): Observable<{ list: Organization[] }> {
+    return this.httpGet(`${this.endpointUrl}/trees`,null,null,this.requestHeaders);
+  }
+
+  public getRootTree(rootId:number): Observable<T> {
+    return this.httpGet(`${this.endpointUrl}/root`,null,{rootId},this.requestHeaders);
+  }
+
+  public orgJobPositions(organizationCode:string): Observable<JobPositionViewModel[]> {
+    return this.httpGet(`${this.endpointUrl}/org-jobpositions`,null,{organizationCode},this.requestHeaders);
+  }
+
+  public organizationUsers(organizationCode:string,name:string,page:number,pageSize:number): Observable<OrganizationUsersViewModel> {
+    return this.httpGet(`${this.endpointUrl}/org-users`,null,{organizationCode,name,page,pageSize},this.requestHeaders);
+  }
+
+  public inviteUser(OrgCode:string,email:string): Observable<any> {
+    return this.httpPost(`${this.endpointUrl}/invite-user`,null,null,{OrgCode,email},this.requestHeaders);
+  }
+
+  public assignUserRoleAndJobPosition(OrganizationCode:string,email:string,jobPositions:string[]){
+    return this.httpPut(`${this.endpointUrl}/org-users`,null,null,{OrganizationCode,email,jobPositions},this.requestHeaders);
+  }
+
+  public removeUserFromOrganization(organizationCode:string,email:string): Observable<{}> {
+    return this.httpDelete(`${this.endpointUrl}/org-users`,null,{organizationCode,email},this.requestHeaders);
+  }
+}
